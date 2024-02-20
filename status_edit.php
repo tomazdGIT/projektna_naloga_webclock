@@ -22,3 +22,4 @@ $result = $stmt->fetch();
 
 <?php
 include_once 'footer.php';
+?>

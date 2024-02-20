@@ -18,7 +18,7 @@
     $(document).ready(function () {
         setTimeout(function () {
             $("#sporocilo").fadeOut("slow");
-        }, 5000);
+        }, 3000);
     });
 </script>
 </body>

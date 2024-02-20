@@ -1,8 +1,9 @@
 <?php
 include_once 'header.php';
+include_once 'db.php';
 
 $id = $_GET['id'];
-include_once 'db.php';
+
 $query = "SELECT * FROM cities WHERE id = ?";
 $stmt = $pdo->prepare($query);
 $stmt->execute([$id]);
@@ -25,3 +26,4 @@ $result = $stmt->fetch();
 
 <?php
 include_once 'footer.php';
+?>

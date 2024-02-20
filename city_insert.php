@@ -1,20 +1,22 @@
 <?php
 include_once 'db.php';
+include_once 'session.php';
 
 $title = $_POST['title'];
 $post_number = $_POST['post_number'];
 
-//preverim ali so vnešeni vsi obvezni podatki
 if (!empty($title) && !empty($post_number)) {
-    //vse ok
+
     $query = "INSERT INTO cities(title,post_number) 
                     VALUES (?, ?)";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$title,$post_number]);
-    //preusmeri na seznam
+
+    msg("Uspešen vnos","success");
     header("Location: cities.php");
 }
 else {
-    //preusmeri nazaj na dodajanje
+    msg("Napaka", "danger");
     header("Location: city_add.php");
 }
+?>

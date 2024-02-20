@@ -1,8 +1,7 @@
 <?php
 include_once 'session.php';
-isAdmin();
-
 include_once 'header.php';
+isAdmin();
 ?>
     <a class="btn btn-primary" href="status_add.php" role="button">Dodaj status</a>
 
@@ -39,3 +38,4 @@ include_once 'header.php';
 
 <?php
 include_once 'footer.php';
+?>

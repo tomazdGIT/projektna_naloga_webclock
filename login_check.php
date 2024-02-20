@@ -5,18 +5,17 @@ include_once 'session.php';
 $email = $_POST['email'];
 $pass = $_POST['pass'];
 
-//preverim ali je user vnese email in pass
 if (!empty($email) && !empty($pass)) {
     $query = "SELECT * FROM employees WHERE email = ?";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$email]);
-    $user = $stmt->fetch();
+    $employee = $stmt->fetch();
 
-    if ($user && password_verify($pass, $user['pass'])) {
-        //podatki so pravilni
+    if ($user && password_verify($pass, $employee['pass'])) {
+
         msg("Uspešna prijava","success");
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['admin'] = $user['admin'];
+        $_SESSION['user_id'] = $employee['id'];
+        $_SESSION['admin'] = $employee['admin'];
         header("Location: index.php");
     }
     else {
@@ -24,3 +23,4 @@ if (!empty($email) && !empty($pass)) {
         header("Location: login.php");
     }
 }
+?>

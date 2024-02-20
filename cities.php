@@ -1,8 +1,7 @@
 <?php
 include_once 'session.php';
-isAdmin();
-
 include_once 'header.php';
+isAdmin();
 ?>
     <a class="btn btn-primary" href="city_add.php" role="button">Dodaj kraj</a>
 
@@ -41,3 +40,4 @@ include_once 'header.php';
 
 <?php
 include_once 'footer.php';
+?>

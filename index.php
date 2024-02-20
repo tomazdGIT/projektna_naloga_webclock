@@ -1,7 +1,7 @@
 <?php
 include_once 'header.php';
 ?>
-    <form action="worktime_insert.php" method="post">
+    <form action="work_time_insert.php" method="post">
         <h1>Registracija časa</h1>
         <h2>Izberite ustrezen dogodek!</h2>
 

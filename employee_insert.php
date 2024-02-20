@@ -1,4 +1,5 @@
 <?php
+include_once 'session.php';
 include_once 'db.php';
 
 $first_name = $_POST['first_name'];
@@ -18,12 +19,10 @@ if (!empty($first_name) && !empty($last_name) && !empty($email) && !empty($pass)
     $stmt = $pdo->prepare($query);
     $stmt->execute([$first_name,$last_name,$telephone,$email,$pass,$city_id,$status_id]);
 
-
-    //preusmeri na employee
+    msg("Uspešen vnos","success");
     header("Location: employee.php");
 }
 else {
-
-    //preusmeri nazaj na dodajanje
+    msg("Napaka v podatkih.","danger");
     header("Location: employee_add.php");
 }
