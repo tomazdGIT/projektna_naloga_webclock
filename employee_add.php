@@ -1,5 +1,6 @@
 <?php
 include_once 'header.php';
+include_once 'db.php';
 ?>
 
     <form action="employee_insert.php" method="post">
@@ -54,10 +55,9 @@ include_once 'header.php';
             </select><br />
             <label for="floatingSelect">Izberi status</label>
             <input type="submit" class="btn btn-primary w-100 py-2" value="Registriraj zaposlenega" />
+
             <input type="button" class="btn btn-primary w-100 py-2" value="Nazaj" onclick="history.back()"/>
-
     </form>
-
 <?php
 include_once 'footer.php';
 ?>

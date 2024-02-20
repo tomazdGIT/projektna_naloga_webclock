@@ -1,47 +1,39 @@
 <?php
-include_once 'session.php';
-isAdmin();
-$user_id = $_SESSION['user_id'];
 include_once 'header.php';
-?>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Zaposleni</th>
-            <th scope="col">Dogodek</th>
-            <th scope="col">Čas</th>
-            <th scope="col">Akcija</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php
-        include_once 'db.php';
-        $query = "SELECT em.email, e.title, w.* FROM events e 
-                    INNER JOIN work_time w ON e.id=w.event_id
-                    INNER JOIN employees em ON em.id=employee_id
-                     
-                      ";
-        $stmt = $pdo->prepare($query);
-        $stmt->execute();
+include_once 'db.php';
 
-        $i=0;
-        while ($result = $stmt->fetch()) {
-            $i++;
-            echo '<tr>';
-            echo '<th scope="row">'.$i.'</th>';
-            echo '<td>'.$result['email'].'</td>';
-            echo '<td>'.$result['title'].'</td>';
-            echo '<td>'.$result['time'].'</td>';
-            echo '<td>
-                    <a href="work_time_edit.phpid='.$result['id'].'"><i class="bi bi-pencil"></i></a>                   
-                   </td>';
-            echo '</tr>';
-        }
-        ?>
-        </tbody>
-    </table>
+$id = $_GET['id'];
+
+$query = "SELECT * FROM work_time WHERE id = ?";
+$stmt = $pdo->prepare($query);
+$stmt->execute([$id]);
+$result = $stmt->fetch();
+?>
+    <form action="work_time_update.php" method="post" >
+        <h1 class="h3 mb-3 fw-normal">Uredi dogodke</h1>
+        <input type="hidden" name="id" value="<?php echo $result['id']; ?>" />
+        <div class="form-floating">
+            <input type="timestamp" name="time" value="<?php echo $result['time']; ?>" required="required" class="form-control" id="floatingInput" placeholder="Čas" />
+            <label for="floatingInput">Uredi čas dogodka</label><br />
+        </div>
+        <div class="form-floating">
+            <select name="event_id" required="required" id="floatingSelect" class="form-select">
+                <?php
+                include_once 'db.php';
+                $query = "SELECT * FROM events";
+                $stmt = $pdo->prepare($query);
+                $stmt->execute();
+
+                while($row = $stmt->fetch()) {
+                    echo '<option value="'.$row['id'].'">'.$row['title'].'</option>';
+                }
+                ?>
+            </select><br />
+            <label for="floatingSelect"> Uredi dogodek zaposlenega</label>
+            <button class="btn btn-primary w-100 py-2" type="submit">Shrani spremembe</button>
+            <input type="button" class="btn btn-primary w-100 py-2" value="Nazaj" onclick="history.back()"/>
+    </form>
 
 <?php
 include_once 'footer.php';
-
+?>

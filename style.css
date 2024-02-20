@@ -7,19 +7,12 @@
     position: absolute;
     top: 0;
     right: 4px;
-    color: white;
+    color: black;
     padding: 5px;
     display: none;
 }
 
 .slike .slika:hover .delete-icon {
-    display: block;
-}
-
-.komentar .delete-btn {
-    display: none;
-}
-
-.komentar:hover .delete-btn {
     display: inline-block;
+
 }

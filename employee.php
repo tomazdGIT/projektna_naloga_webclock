@@ -1,8 +1,7 @@
 <?php
 include_once 'session.php';
-isAdmin();
-
 include_once 'header.php';
+isAdmin();
 ?>
     <a class="btn btn-primary" href="employee_add.php" role="button">Registracija novega zaposlenega</a>
 
@@ -33,7 +32,7 @@ include_once 'header.php';
             echo '<td>'.$result['email'].'</td>';
             echo '<td>
                     <a href="employee_edit.php?id='.$result['id'].'"><i class="bi bi-pencil"></i></a>
-                    <a href=employee_delete.php?id='.$result['id'].'" onclick="return confirm(\'Prepričani?\');"><i class="bi bi-trash"></i></a>
+                    <a href="employee_delete.php?id='.$result['id'].'" onclick="return confirm(\'Prepričani?\');"><i class="bi bi-trash"></i></a>
                    </td>';
             echo '</tr>';
         }
@@ -43,3 +42,4 @@ include_once 'header.php';
 
 <?php
 include_once 'footer.php';
+?>
