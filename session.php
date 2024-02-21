@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+//funkcija ki preveri če je prijavljeni admin
 function isAdmin() {
     $return = false;
     if (isset($_SESSION['admin']) && $_SESSION['admin']==1) {
@@ -12,7 +12,7 @@ function isAdmin() {
         die();
     }
 }
-
+//funkcija za izpis obvestil
 function msg($msg, $type) {
     $_SESSION['msg'] = $msg;
     $_SESSION['type'] = $type;

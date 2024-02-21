@@ -1,6 +1,7 @@
 <?php
 include_once 'session.php';
 include_once 'header.php';
+//preverimo če je uporabnik admin
 isAdmin();
 ?>
     <a class="btn btn-primary" href="status_add.php" role="button">Dodaj status</a>
@@ -19,7 +20,7 @@ isAdmin();
         $query = "SELECT * FROM status ORDER BY title";
         $stmt = $pdo->prepare($query);
         $stmt->execute();
-
+        //izpis statusov iz baze z dodano možnostko brisanja in urejanja
         $i=0;
         while ($result = $stmt->fetch()) {
             $i++;

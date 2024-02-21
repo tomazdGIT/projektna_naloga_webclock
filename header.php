@@ -129,19 +129,16 @@ include_once 'session.php';
                     <ul class="list-unstyled">
                         <?php
                         //je admin
-
                         if (isset($_SESSION['admin']) && $_SESSION['admin']==1) {
                             echo '<li><a href="cities.php" class="text-white">Kraji</a></li>';
                             echo '<li><a href="status.php" class="text-white">Statusi</a></li>';
                             echo '<li><a href="events.php" class="text-white">Dogodki</a></li>';
                             echo '<li><a href="employee.php" class="text-white">Zaposleni</a></li>';
-
                         }
-                        //je prijavljen
+                        //ni admin in je prijavljen
                         if (isset($_SESSION['user_id'])) {
                             echo '<li><a href="work_time.php" class="text-white">Delovni čas</a></li>';
                             echo '<li><a href="logout.php" class="text-white">Odjava</a></li>';
-
                         }
                         ?>
                     </ul>
@@ -164,6 +161,7 @@ include_once 'session.php';
 <main>
     <div class="album py-5 bg-body-tertiary">
         <div class="container">
+            //izpis sporočila
             <?php
             if (isset($_SESSION['msg'])) {
                 echo '<div id="sporocilo" class="alert alert-'.$_SESSION['type'].'">'.$_SESSION['msg'].'</div>';

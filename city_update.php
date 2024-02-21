@@ -5,17 +5,18 @@ include_once 'session.php';
 $title = $_POST['title'];
 $post_number = $_POST['post_number'];
 $id = $_POST['id'];
-
+//preverim ali so vnešeni vsi obvezni podatki
 if (!empty($title) && !empty($post_number)) {
-
+    //ok-vpis v bazo
     $query = "UPDATE cities SET title=?, post_number=? WHERE id=?";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$title,$post_number,$id]);
-
+    //obvestilo in preusmeritev
     msg("Uspešna posodobitev podatkov","success");
     header("Location: cities.php");
 }
 else {
+    //napaka-obvestilo in preusmeritev
     msg("Napaka", "danger");
     header("Location: city_edit.php?id=$id");
 }

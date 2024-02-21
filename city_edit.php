@@ -3,7 +3,7 @@ include_once 'header.php';
 include_once 'db.php';
 
 $id = $_GET['id'];
-
+//poizvedba za izpis mesta za urejenje
 $query = "SELECT * FROM cities WHERE id = ?";
 $stmt = $pdo->prepare($query);
 $stmt->execute([$id]);

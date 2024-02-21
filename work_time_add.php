@@ -12,7 +12,7 @@ include_once 'db.php';
             $query = "SELECT * FROM employees";
             $stmt = $pdo->prepare($query);
             $stmt->execute();
-
+            //izpis vseh zaposlenih za izbirni meni
             while($row = $stmt->fetch()) {
                 echo '<option value="'.$row['id'].'">'.$row['email'].'</option>';
             }
@@ -27,7 +27,7 @@ include_once 'db.php';
             $query = "SELECT * FROM events";
             $stmt = $pdo->prepare($query);
             $stmt->execute();
-
+            //izpis vseh dogodkov za izbirni meni
             while($row = $stmt->fetch()) {
                 echo '<option value="'.$row['id'].'">'.$row['title'].'</option>';
             }

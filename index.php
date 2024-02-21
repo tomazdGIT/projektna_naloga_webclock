@@ -6,6 +6,7 @@ include_once 'header.php';
         <h2>Izberite ustrezen dogodek!</h2>
 
         <h1 style="text-align:right">Ura:
+            //izpis trenutnega časa
             <?php
             date_default_timezone_set('Europe/Ljubljana');
             echo $timestamp = date('H:i:s');
@@ -19,7 +20,7 @@ include_once 'header.php';
             $query = "SELECT * FROM events";
             $stmt = $pdo->prepare($query);
             $stmt->execute();
-
+            //izpis vseh dogodkov za izbirni meni
             while($row = $stmt->fetch()) {
                 echo '<option value="'.$row['id'].'">'.$row['title'].'</option>';
             }

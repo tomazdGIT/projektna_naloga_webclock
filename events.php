@@ -1,6 +1,7 @@
 <?php
 include_once 'session.php';
 include_once 'header.php';
+//preverimo če je uporabnik admin
 isAdmin();
 ?>
     <a class="btn btn-primary" href="event_add.php" role="button">Dodaj dogodek</a>
@@ -19,7 +20,7 @@ isAdmin();
         $query = "SELECT * FROM events ORDER BY title";
         $stmt = $pdo->prepare($query);
         $stmt->execute();
-
+        //izpis dogodkov iz baze z dodano možnostko brisanja in urejanja
         $i=0;
         while ($result = $stmt->fetch()) {
             $i++;

@@ -3,7 +3,7 @@ include_once 'header.php';
 include_once 'db.php';
 
 $id = $_GET['id'];
-
+//poizvedba za izpis dogodka zaposlenega za urejenje razen za izbirne menije
 $query = "SELECT * FROM work_time WHERE id = ?";
 $stmt = $pdo->prepare($query);
 $stmt->execute([$id]);
@@ -23,7 +23,7 @@ $result = $stmt->fetch();
                 $query = "SELECT * FROM events";
                 $stmt = $pdo->prepare($query);
                 $stmt->execute();
-
+                //izpis vseh dogodkov za izbirni meni
                 while($row = $stmt->fetch()) {
                     echo '<option value="'.$row['id'].'">'.$row['title'].'</option>';
                 }

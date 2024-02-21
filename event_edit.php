@@ -1,7 +1,7 @@
 <?php
 include_once 'header.php';
 include_once 'db.php';
-
+//poizvedba za izpis dogodka za urejenje
 $id = $_GET['id'];
 $query = "SELECT * FROM events WHERE id = ?";
 $stmt = $pdo->prepare($query);
