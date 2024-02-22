@@ -161,7 +161,7 @@ include_once 'session.php';
 <main>
     <div class="album py-5 bg-body-tertiary">
         <div class="container">
-            //izpis sporočila
+
             <?php
             if (isset($_SESSION['msg'])) {
                 echo '<div id="sporocilo" class="alert alert-'.$_SESSION['type'].'">'.$_SESSION['msg'].'</div>';

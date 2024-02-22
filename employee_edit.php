@@ -43,10 +43,6 @@ $result = $stmt->fetch();
             <label for="floatingInput">Uredi e-pošto zaposlenega</label><br />
         </div>
         <div class="form-floating">
-            <input type="password" name="pass" value="<?php echo $result['pass']; ?>" required="required" class="form-control" id="floatingInput" placeholder="E-mail" />
-            <label for="floatingInput">Uredi geslo zaposlenega</label><br />
-        </div>
-        <div class="form-floating">
             <input type="text" name="telephone" value="<?php echo $result['telephone']; ?>"  class="form-control" id="floatingInput" placeholder="Telefon" />
             <label for="floatingInput">Uredi telefonsko številko zaposlenega</label><br />
         </div>
@@ -64,9 +60,21 @@ $result = $stmt->fetch();
                 ?>
             </select><br />
             <label for="floatingSelect"> Uredi status zaposlenega</label>
-
             <button class="btn btn-primary w-100 py-2" type="submit">Shrani spremembe</button>
+        </div>
     </form>
+
+    <!menjava gesla>
+    <h1 class="h3 mb-3 fw-normal">Menjava gesla zaposlenega</h1>
+    <form action="pass_update.php" method="post">
+        <input type="hidden" name="id" value="<?php echo $id;?>" />
+        <div class="form-floating">
+            <input type="password" name="pass" class="form-control" id="floatingInput1" placeholder="Geslo" />
+            <label for="floatingInput1">Vpiši novo geslo</label><br />
+            <button class="btn btn-primary w-100 py-2" type="submit">Shrani geslo</button>
+        </div>
+    </form>
+    <!profilna slika z izbrisom>
     <h1 class="h3 mb-3 fw-normal">Uredi profilno sliko</h1>
     <div class="slike">
         <?php
@@ -82,7 +90,8 @@ $result = $stmt->fetch();
         }
         ?>
     </div>
-    <!forma za dodajanje slike
+
+    <!dodajanje slike>
     <form action="picture_insert.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?php echo $id;?>" />
         <div class="mb-3">

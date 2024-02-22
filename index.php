@@ -6,8 +6,8 @@ include_once 'header.php';
         <h2>Izberite ustrezen dogodek!</h2>
 
         <h1 style="text-align:right">Ura:
-            //izpis trenutnega časa
             <?php
+            //izpis trenutnega časa
             date_default_timezone_set('Europe/Ljubljana');
             echo $timestamp = date('H:i:s');
             ?>
