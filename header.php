@@ -138,6 +138,7 @@ include_once 'session.php';
                         //ni admin in je prijavljen
                         if (isset($_SESSION['user_id'])) {
                             echo '<li><a href="work_time.php" class="text-white">Delovni čas</a></li>';
+                            echo '<li><a href="pass_change.php" class="text-white">Sprememba gesla</a></li>';
                             echo '<li><a href="logout.php" class="text-white">Odjava</a></li>';
                         }
                         ?>

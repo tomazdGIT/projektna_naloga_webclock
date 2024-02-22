@@ -34,13 +34,13 @@ if ($uploadOk == 1) {
         $stmt = $pdo->prepare($query);
         $stmt->execute([$target_file,$id]);
         //obvestilo in preusmeritev
-        msg("Uspešna prijava","success");
+        msg("Uspešno nalaganje slike","success");
         header("Location: employee_edit.php?id=$id");
     }
 }
 else {
     //napaka-obvestilo in preusmeritev
-    msg("Napaka.","danger");
+    msg("Napaka","danger");
     header("Location: employee_edit.php?id=$id");
 }
 ?>

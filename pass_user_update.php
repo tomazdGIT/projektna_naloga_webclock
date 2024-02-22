@@ -4,6 +4,7 @@ include_once 'db.php';
 
 $id = $_POST['id'];
 $pass = $_POST['pass'];
+$pass2 = $_POST['pass2'];
 
 //preverim ali so vnešeni vsi obvezni podatki in če se gesla ujemata
 if (!empty($pass) && !empty($pass2) && $pass == $pass2) {
@@ -15,11 +16,11 @@ if (!empty($pass) && !empty($pass2) && $pass == $pass2) {
     $stmt->execute([$pass,$id]);
     //obvestilo in preusmeritev
     msg("Uspešna posodobitev podatkov","success");
-    header("Location: employee.php");
+    header("Location: pass_change.php");
     die();
 }
 else {
     //napaka-obvestilo in preusmeritev
     msg("Napaka", "danger");
-    header("Location: employee_edit.php?id=$id");
+    header("Location: pass_change.php");
 }

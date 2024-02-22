@@ -13,7 +13,7 @@ $result = $stmt->fetch();
         <h1 class="h3 mb-3 fw-normal">Uredi kraj</h1>
         <input type="hidden" name="id" value="<?php echo $result['id']; ?>" />
         <div class="form-floating">
-            <input type="text" name="title" value="<?php echo $result['title']; ?>" required="required" class="form-control" id="floatingInput" placeholder="Ime kraja" />
+            <input type="text" name="city_name" value="<?php echo $result['city_name']; ?>" required="required" class="form-control" id="floatingInput" placeholder="Ime kraja" />
             <label for="floatingInput">Uredi ime kraja</label>
         </div>
         <div class="form-floating">

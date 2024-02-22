@@ -32,7 +32,7 @@ $result = $stmt->fetch();
                 $stmt->execute();
                 //izpis vseh mest za izbirni meni
                 while($row = $stmt->fetch()) {
-                    echo '<option value="'.$row['id'].'">'.$row['title'].'</option>';
+                    echo '<option value="'.$row['id'].'">'.$row['city_name'].'</option>';
                 }
                 ?>
             </select><br />
@@ -70,10 +70,16 @@ $result = $stmt->fetch();
         <input type="hidden" name="id" value="<?php echo $id;?>" />
         <div class="form-floating">
             <input type="password" name="pass" class="form-control" id="floatingInput1" placeholder="Geslo" />
-            <label for="floatingInput1">Vpiši novo geslo</label><br />
-            <button class="btn btn-primary w-100 py-2" type="submit">Shrani geslo</button>
+            <label for="floatingInput1">Vpiši novo geslo</label>
         </div>
+        <div class="form-floating">
+            <input type="password" name="pass2" class="form-control" id="floatingInput" placeholder="Geslo2" />
+            <label for="floatingInput">Ponovi geslo</label><br />
+        </div>
+        <button class="btn btn-primary w-100 py-2" type="submit">Shrani geslo</button>
+        <input type="button" class="btn btn-primary w-100 py-2" value="Nazaj" onclick="history.back()"/>
     </form>
+
     <!profilna slika z izbrisom>
     <h1 class="h3 mb-3 fw-normal">Uredi profilno sliko</h1>
     <div class="slike">
@@ -101,6 +107,7 @@ $result = $stmt->fetch();
         <input type="submit" name="submit" class="btn btn-primary w-100 py-2" value="Shrani profilno sliko" />
     </form>
     <input type="button" class="btn btn-primary w-100 py-2" value="Nazaj" onclick="history.back()"/>
+
 <?php
 include_once 'footer.php';
 ?>

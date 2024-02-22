@@ -6,7 +6,7 @@ include_once 'header.php';
         <h1 class="h3 mb-3 fw-normal">Dodaj kraj</h1>
 
         <div class="form-floating">
-            <input type="text" name="title" required="required" class="form-control" id="floatingInput" placeholder="Ime kraja" />
+            <input type="text" name="city_name" required="required" class="form-control" id="floatingInput" placeholder="Ime kraja" />
             <label for="floatingInput">Vnesi ime kraja</label>
         </div>
         <div class="form-floating">

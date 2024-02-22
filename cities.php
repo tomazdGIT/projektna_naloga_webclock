@@ -18,7 +18,7 @@ isAdmin();
         <tbody>
         <?php
         include_once 'db.php';
-        $query = "SELECT * FROM cities ORDER BY title";
+        $query = "SELECT * FROM cities ORDER BY city_name";
         $stmt = $pdo->prepare($query);
         $stmt->execute();
         //izpis mest iz baze z dodano možnostko brisanja in urejanja
@@ -27,7 +27,7 @@ isAdmin();
             $i++;
             echo '<tr>';
             echo '<th scope="row">'.$i.'</th>';
-            echo '<td>'.$result['title'].'</td>';
+            echo '<td>'.$result['city_name'].'</td>';
             echo '<td>'.$result['post_number'].'</td>';
             echo '<td>
                     <a href="city_edit.php?id='.$result['id'].'"><i class="bi bi-pencil"></i></a>
