@@ -1,9 +1,22 @@
 <?php
 include_once 'header.php';
+include_once 'session.php';
+$user_id = $_SESSION['user_id'];
 ?>
     <form action="work_time_insert.php" method="post">
         <h1>Registracija časa</h1>
-        <h2>Izberite ustrezen dogodek!</h2>
+        <h2>
+            <?php
+            //izpis trenutno prijavljenega zaposlenega
+            include_once 'db.php';
+            $query = "SELECT * FROM employees WHERE id=?";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([$user_id]);
+            $result = $stmt->fetch();
+            echo $result['email'];
+            ?>
+            --- Prosim izberite ustrezen dogodek!
+        </h2>
 
         <h1 style="text-align:right">Ura:
             <?php

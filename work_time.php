@@ -3,11 +3,12 @@ include_once 'session.php';
 include_once 'header.php';
 //spremenljivka uporabnik iz seje za izpis
 $employee_id=$_SESSION['user_id'];
-//preverimo če je uporabnik admin
-isAdmin();
-//če je se doda gumb za urejanje
-echo '<a class="btn btn-primary" href="work_time_admin.php" role="button">Uredi delovni čas zaposlenega</a>';
 
+//preverimo če je uporabnik admin
+if (isset($_SESSION['admin']) && $_SESSION['admin']==1){
+//če je se doda gumb za urejanje
+    echo '<a class="btn btn-primary" href="work_time_admin.php" role="button">Uredi delovni čas zaposlenega</a>';
+}
 ?>
 <h3>Tvoji dogodki:</h3>
     <table class="table table-striped">
