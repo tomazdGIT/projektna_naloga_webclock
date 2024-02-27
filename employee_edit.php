@@ -9,45 +9,56 @@ $query = "SELECT * FROM employees WHERE id = ?";
 $stmt = $pdo->prepare($query);
 $stmt->execute([$id]);
 $result = $stmt->fetch();
+
+$currentcity=$result['city_id'];
+$currentstatus=$result['status_id'];
 ?>
     <form action="employee_update.php" method="post" >
         <h1 class="h3 mb-3 fw-normal">Uredi zaposlenega</h1>
         <input type="hidden" name="id" value="<?php echo $result['id']; ?>" />
         <div class="form-floating">
-            <input type="text" name="first_name" value="<?php echo $result['first_name']; ?>" required="required" class="form-control" id="floatingInput" placeholder="Ime" />
+            <input type="text" name="first_name" value="<?php echo $result['first_name']; ?>" required="required" class="form-control" id="floatingInput1" placeholder="Ime" />
             <label for="floatingInput">Uredi ime zaposlenega</label><br />
         </div>
         <div class="form-floating">
-            <input type="text" name="last_name" value="<?php echo $result['last_name']; ?>" required="required" class="form-control" id="floatingInput" placeholder="Priimek" />
+            <input type="text" name="last_name" value="<?php echo $result['last_name']; ?>" required="required" class="form-control" id="floatingInput2" placeholder="Priimek" />
             <label for="floatingInput">Uredi priimek zaposlenega</label><br />
         </div>
-
         <div class="form-floating">
-            <select name="city_id" required="required" id="floatingSelect" class="form-select">
-                <?php
-                include_once 'db.php';
-
-                $query = "SELECT * FROM cities";
-                $stmt = $pdo->prepare($query);
-                $stmt->execute();
-                //izpis vseh mest za izbirni meni
-                while($row = $stmt->fetch()) {
-                    echo '<option value="'.$row['id'].'">'.$row['city_name'].'</option>';
-                }
-                ?>
-            </select><br />
-            <label for="floatingSelect"> Uredi kraj zaposlenega</label>
-        </div>
-        <div class="form-floating">
-            <input type="email" name="email" value="<?php echo $result['email']; ?>" required="required" class="form-control" id="floatingInput" placeholder="E-mail" />
+            <input type="email" name="email" value="<?php echo $result['email']; ?>" required="required" class="form-control" id="floatingInput3" placeholder="E-mail" />
             <label for="floatingInput">Uredi e-pošto zaposlenega</label><br />
         </div>
         <div class="form-floating">
-            <input type="text" name="telephone" value="<?php echo $result['telephone']; ?>"  class="form-control" id="floatingInput" placeholder="Telefon" />
+            <input type="text" name="address" value="<?php echo $result['address']; ?>" required="required" class="form-control" id="floatingInput4" placeholder="Naslov" />
+            <label for="floatingInput">Uredi naslov zaposlenega</label><br />
+        </div>
+        <div class="form-floating">
+            <select name="city_id"  required="required" id="floatingSelect5" class="form-select">
+                <?php
+                include_once 'db.php';
+                $query = "SELECT * FROM cities";
+                $stmt = $pdo->prepare($query);
+                $stmt->execute();
+                //izpis vseh statusov za izbirni meni
+                while($row = $stmt->fetch()) {
+                    //zapis privzete vrednosti iz baze za privzeto vrednost
+                    if ($currentcity == $row['id']) {
+                        echo '<option selected ="selected" value="'.$row['id'].'">'.$row['city_name'].'</option>';
+                    }
+                    else{
+                        echo '<option value="'.$row['id'].'">'.$row['city_name'].'</option>';
+                    }
+                }
+                ?>
+            </select><br />
+            <label for="floatingSelect">Uredi kraj zaposlenega</label>
+        </div>
+        <div class="form-floating">
+            <input type="text" name="telephone" value="<?php echo $result['telephone']; ?>"  class="form-control" id="floatingInput6" placeholder="Telefon" />
             <label for="floatingInput">Uredi telefonsko številko zaposlenega</label><br />
         </div>
         <div class="form-floating">
-            <select name="status_id" required="required" id="floatingSelect" class="form-select">
+            <select  name="status_id" required="required" id="floatingSelect7" class="form-select">
                 <?php
                 include_once 'db.php';
                 $query = "SELECT * FROM status";
@@ -55,11 +66,17 @@ $result = $stmt->fetch();
                 $stmt->execute();
                 //izpis vseh statusov za izbirni meni
                 while($row = $stmt->fetch()) {
-                    echo '<option value="'.$row['id'].'">'.$row['title'].'</option>';
+                    //zapis privzete vrednosti iz baze za privzeto vrednost
+                    if ($currentstatus== $row['id']) {
+                        echo '<option selected ="selected" value="'.$row['id'].'">'.$row['title'].'</option>';
+                    }
+                    else{
+                        echo '<option value="'.$row['id'].'">'.$row['title'].'</option>';
+                    }
                 }
                 ?>
             </select><br />
-            <label for="floatingSelect"> Uredi status zaposlenega</label>
+            <label for="floatingSelect">Uredi status zaposlenega</label>
             <button class="btn btn-primary w-100 py-2" type="submit">Shrani spremembe</button>
         </div>
     </form>

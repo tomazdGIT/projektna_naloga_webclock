@@ -4,6 +4,7 @@ include_once 'db.php';
 
 $id = $_POST['id'];
 $pass = $_POST['pass'];
+$pass2 = $_POST['pass2'];
 
 //preverim ali so vnešeni vsi obvezni podatki in če se gesla ujemata
 if (!empty($pass) && !empty($pass2) && $pass == $pass2) {

@@ -3,8 +3,13 @@ include_once 'db.php';
 include_once 'session.php';
 
 $id = $_GET['id'];
-//preverimo ce dobimo id
-if (!empty($id)) {
+
+$query = "SELECT * FROM pictures WHERE employee_id = ?";
+$stmt = $pdo->prepare($query);
+$stmt->execute([$id]);
+$num_pictures = $stmt->rowCount();
+//preverimo ce dobimo id in da zaposleni nima več shranjenih profilnih slik
+if (!empty($id) && $num_pictures == 0) {
     //ok-izbris iz baze
     $query = "DELETE FROM employees WHERE id = ?";
     $stmt = $pdo->prepare($query);
@@ -15,6 +20,6 @@ if (!empty($id)) {
 }
 else {
     //napaka-obvestilo in preusmeritev
-    msg("Napaka", "danger");
+    msg("Napaka-poskusite najprej izbrisati profilne sike", "danger");
     header("Location: employee.php");
 }
