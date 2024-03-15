@@ -59,6 +59,12 @@ include_once 'db.php';
             <label for="floatingSelect">Izberi status</label>
         </div>
 
+        <!admin status >
+        <div class="checkbox">
+            <input type="checkbox" id="statusadmin" name="admin" value= 1 >
+            <label for="admin"> Administrator </label>
+        </div></br>
+
         <input type="submit" class="btn btn-primary w-100 py-2" value="Registriraj zaposlenega" />
         <input type="button" class="btn btn-primary w-100 py-2" value="Nazaj" onclick="history.back()"/>
     </form>

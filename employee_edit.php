@@ -75,7 +75,7 @@ $currentstatus=$result['status_id'];
                     }
                 }
                 ?>
-            </select><br />
+            </select><br>
             <label for="floatingSelect">Uredi status zaposlenega</label>
             <button class="btn btn-primary w-100 py-2" type="submit">Shrani spremembe</button>
         </div>

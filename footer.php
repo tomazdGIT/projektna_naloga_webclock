@@ -22,5 +22,32 @@
         }, 3000);
     });
 </script>
+<script>
+    function updateClock() {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+
+        //dodamo vodilno 0 pred enojne številke
+        hours = (hours < 10 ? "0" : "") + hours;
+        minutes = (minutes < 10 ? "0" : "") + minutes;
+        seconds = (seconds < 10 ? "0" : "") + seconds;
+
+        // format izpisa ure HH:MM:SS
+        var timeString = hours + ":" + minutes + ":" + seconds;
+
+        //posodobitev ure
+        document.getElementById("clock").innerHTML = timeString;
+
+        //interval posodobitve ure vsako sekundo
+        setTimeout(updateClock, 1000);
+    }
+
+    //zagon funkcije ob nalaganju strani
+    window.onload = function() {
+        updateClock();
+    };
+</script>
 </body>
 </html>

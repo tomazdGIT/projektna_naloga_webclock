@@ -17,15 +17,10 @@ $user_id = $_SESSION['user_id'];
             ?>
             --- Prosim izberite ustrezen dogodek!
         </h2>
-
-        <h1 style="text-align:right">Ura:
-            <?php
-            //izpis trenutnega časa
-            date_default_timezone_set('Europe/Ljubljana');
-            echo $timestamp = date('H:i:s');
-            ?>
-        </h1><br />
-
+        <h1>
+            <!izpis live ure>
+            <div style="text-align:right" id="clock"></div>
+        </h1>
         <div class="form-floating">
         <select name="event_id" required="required" id="floatingSelect" class="form-select">
             <?php

@@ -24,7 +24,8 @@ if (isset($_SESSION['admin']) && $_SESSION['admin']==1){
         include_once 'db.php';
         $query = "SELECT  e.title, w.* FROM events e INNER JOIN work_time w 
                     ON e.id=w.event_id
-                    WHERE employee_id=? ";
+                    WHERE employee_id=? 
+                    ORDER BY w.time DESC";
         $stmt = $pdo->prepare($query);
         $stmt->execute([$employee_id]);
         //izpis dogodkov iz baze

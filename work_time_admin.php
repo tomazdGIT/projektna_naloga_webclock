@@ -23,7 +23,7 @@ echo '<a class="btn btn-primary" href="work_time_add.php" role="button">Dodaj do
         $query = "SELECT em.email, e.title, w.* FROM events e 
                     INNER JOIN work_time w ON e.id=w.event_id
                     INNER JOIN employees em ON em.id=employee_id 
-                    ORDER BY w.time";
+                    ORDER BY w.time DESC ";
         $stmt = $pdo->prepare($query);
         $stmt->execute();
         //izpis dogodkov iz baze z dodano možnostko brisanja in urejanja
